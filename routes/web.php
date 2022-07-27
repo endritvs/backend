@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\interviewee_types;
 use App\Http\Controllers\IntervieweeTypesController;
+use App\Http\Controllers\Interviewee_AttributesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,11 @@ Route::get('/', function () {
 });
 
 Route::get('/interviewee', function () {
-    return view('intervieweeComponents/intervieweeTable');
+    return view('intervieweeComponents/table');
+});
+
+Route::get('/interviewee-attributes', function () {
+    return view('intervieweeAttributesComponents/table');
 });
 
 
@@ -39,6 +44,11 @@ Route::prefix('interviewee')->group(function () {
     Route::get('/create', [IntervieweeTypesController::class, 'create'])->name('interviewee.create');
     Route::post('/store-interviewee', [IntervieweeTypesController::class, 'store'])->name('interviewee.store');
 });
+
+Route::prefix('interviewee-attributes')->group(function () {
+    Route::get('/', [Interviewee_AttributesController::class, 'index'])->name('interviewee-attributes.index');
+});
+
 
 
 require __DIR__ . '/auth.php';

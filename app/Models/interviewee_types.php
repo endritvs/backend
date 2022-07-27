@@ -4,8 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Interviewee_Attributes;
 
 class interviewee_types extends Model
 {
     use HasFactory;
+<<<<<<< Updated upstream
 }
+=======
+    protected $fillable = [
+        'name'
+    ];
+
+
+    public function interviewee_attributes()
+    {
+        return $this->belongsTo(Interviewee_Attributes::class);
+    }
+}
+>>>>>>> Stashed changes
