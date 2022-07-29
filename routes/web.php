@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Interviewee_Type;
 use App\Http\Controllers\IntervieweeTypesController;
+use App\Http\Controllers\Interviewee_AttributesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +29,11 @@ Route::get('/user', function () {
 });
 
 Route::get('/interviewee', function () {
-    return view('intervieweeComponents/intervieweeTable');
+    return view('intervieweeComponents/table');
+});
+
+Route::get('/interviewee-attributes', function () {
+    return view('intervieweeAttributesComponents/table');
 });
 
 
@@ -47,6 +52,18 @@ Route::prefix('interviewee')->group(function () {
     Route::get('/create', [IntervieweeTypesController::class, 'create'])->name('interviewee.create');
     Route::post('/store-interviewee', [IntervieweeTypesController::class, 'store'])->name('interviewee.store');
 });
+
+Route::prefix('interviewee-attributes')->group(
+    function () {
+        Route::get('/', [Interviewee_AttributesController::class, 'index'])->name('intervieweeAttributes.index');
+        Route::get('/edit-interviewee/{id}', [Interviewee_AttributesController::class, 'edit'])->name('intervieweeAttributes.edit');
+        Route::post('/update-interviewee/{id}', [Interviewee_AttributesController::class, 'update'])->name('intervieweeAttributes.update');
+        Route::get('/destroy/{id}', [Interviewee_AttributesController::class, 'destroy'])->name('intervieweeAttributes.destroy');
+        Route::get('/create', [Interviewee_AttributesController::class, 'create'])->name('intervieweeAttributes.create');
+        Route::post('/store-interviewee', [Interviewee_AttributesController::class, 'store'])->name('intervieweeAttributes.store');
+    }
+);
+
 
 
 require __DIR__ . '/auth.php';

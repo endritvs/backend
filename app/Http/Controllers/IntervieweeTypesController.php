@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-<<<<<<< Updated upstream
-use App\Models\interviewee_types;
+
 use App\Http\Requests\Storeinterviewee_typesRequest;
 use App\Http\Requests\Updateinterviewee_typesRequest;
-=======
+
 use App\Models\Interviewee_Type;
 
->>>>>>> Stashed changes
+
+
+
 
 class IntervieweeTypesController extends Controller
 {
